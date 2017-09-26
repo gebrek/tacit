@@ -22,11 +22,19 @@
 
                ;; for DB
                :datafly
-               :sxql)
+               :sxql
+
+	       ;; for other tasks
+	       :drakma
+	       :cl-json
+	       :split-sequence
+	       :vecto
+	       :md5)
   :components ((:module "src"
                 :components
                 ((:file "main" :depends-on ("config" "view" "db"))
                  (:file "web" :depends-on ("view"))
+		 (:file "model" :depends-on ("config"))
                  (:file "view" :depends-on ("config"))
                  (:file "db" :depends-on ("config"))
                  (:file "config"))))

@@ -5,8 +5,11 @@
         :tacit-tales.config
         :tacit-tales.view
         :tacit-tales.db
+	:tacit-tales.model
         :datafly
-        :sxql)
+        :sxql
+	:split-sequence
+	:md5)
   (:export :*web*))
 (in-package :tacit-tales.web)
 
@@ -25,6 +28,26 @@
 
 (defroute "/" ()
   (render #P"index.html"))
+
+;; (defroute "/compare/*" (&key splat)
+;;   (format nil "We saw this in the URL: ~a" (car splat)))
+
+;; (defroute "/compare/*" (&key splat)
+;;   (let* ((language-list
+;;           (remove "" (split-sequence #\/ (car splat)) :test #'equal))
+;;          (stats (get-language-sub-stats language-list)))
+;;     (format nil "<div style='font-size:.8em;'>~{~a<br>~%~}</div>"
+;;             (get-language-sub-stats language-list))))
+
+(defroute "/compare/*" (&key splat)
+  (let* ((language-list
+          (remove "" (split-sequence #\/ (car splat)) :test #'equal))
+         (stats (get-language-sub-stats language-list))
+         (pie-name (pie-chart stats)))
+    (format nil "<img src='/images/~a.png' style='float:left;'>
+<div style='font-size:.8em;'>~{~a<br>~%~}</div>"
+            pie-name
+            (get-language-sub-stats language-list))))
 
 ;;
 ;; Error pages
