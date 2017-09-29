@@ -1,0 +1,16 @@
+{% extends "layouts/default.html" %}
+{% block title %}Tacit Tales{% endblock %}
+{% block content %}
+<h3>Subdirectories</h3>
+<ul>
+  {% for dir in subdirs %}
+  <li><a href="./{{ dir }}">{{ dir }}</a></li>
+  {% endfor %}
+</ul>
+<h3>Files</h3>
+<ul>
+  {% for file in files %}
+  <li><a href="./{{ file }}">{{ file }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

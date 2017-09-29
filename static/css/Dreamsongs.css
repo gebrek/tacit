@@ -1,0 +1,41 @@
+body { background-color: #ffcc99 }
+p  { color: #000000; font-size: 14px; font-family: Georgia, AGaramond, "Times New Roman", serif; line-height: 18px; text-align: justify; margin-right: 10%; margin-left: 10% }
+.noindent { margin-right: 0%; margin-left: 0% }
+.noindsmall { margin-right: 0%; margin-left: 0%; font-size: 10px; }
+.right { text-align: right; }
+.italics { font-style: italic }
+.left { text-align: left; }
+.center { text-align: center; }
+.attribution {font-size: 12px; font-family: Geneva, Arial, Helvetica, sans-serif; text-align: right; margin-right: 15%; margin-left: 33% }
+.poetry { font-family: Arial, Helvetica, sans-erif;}
+li { font-family: Georgia, AGaramond, Times New Roman, serif; font-size: 14px; color: #000000; font-style: normal; text-align: justify; line-height: 18px; }
+.roman { font-style: normal }
+td {}
+hr { padding-top: 0em; padding-bottom: 0em }
+img { border: 0em; padding-top: 0em; padding-bottom: 0em }
+h1  { color: #000000; font-size: 28px; font-family: Georgia, AGaramond, "Times New Roman", serif; line-height: 28px; text-align: center; margin-right: 10%; margin-left: 10% }
+.left { text-align: left; }
+.big { font-size: 36pt }
+h2  { color: #000000; font-size: 20px; font-family: Georgia, AGaramond, "Times New Roman", serif; line-height: 20px; text-align: left; margin-right: 10%; margin-left: 10% }
+.center { text-align: center; }
+h3  { color: #000000; font-size: 16px; font-family: Georgia, AGaramond, "Times New Roman", serif; line-height: 16px; text-align: left; margin-right: 10%; margin-left: 10% }
+h4  { color: #000000; font-size: 14px; font-family: Georgia, AGaramond, "Times New Roman", serif; line-height: 16px; text-align: left; margin-right: 10%; margin-left: 10% }
+pre { font-family: "Courier New", Courier, monospace; font-size: 10px margin-right: 10%; margin-left: 10%}
+.noindent { margin-right: 0%; margin-left: 0% }
+hr { width: 80%; }
+blockquote  { color: #000000; font-size: 14px; font-family: Georgia, AGaramond, "Times New Roman", serif; font-style: italic; line-height: 18px; text-align: justify; margin-right: 15%; margin-left: 15% }
+.roman { font-style: roman; }
+.noindent { margin-left: 0%; margin-right: 0% }
+form { margin-right: 10%; margin-left: 10% }
+table { margin-right: 10%; margin-left: 10% }
+.noindent { margin-left: 0%; margin-right: 0% }
+ul { margin-left: 12%; margin-right: 10%}
+.inner { list-style-type: circle; margin-left: 2%; }
+.innerinner { list-style-type: square; margin-left: 2%; }
+ol {  margin-left: 12%; margin-right: 10% }
+.inner { margin-left: 2%;  }
+.innerupal { list-style-type: upper-alpha; margin-left: 2%;  }
+.innerloal { list-style-type: lower-alpha; margin-left: 2%;  }
+.innerupro { list-style-type: upper-roman; margin-left: 2%;  }
+.innerloro{  list-style-type: lower-roman; margin-left: 2%;  }
+dl {  margin-left: 12%; margin-right: 10% }
