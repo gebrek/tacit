@@ -33,10 +33,11 @@
   :components ((:module "src"
                 :components
                 ((:file "main" :depends-on ("config" "view" "db"))
-                 (:file "web" :depends-on ("view"))
+                 (:file "web" :depends-on ("lib" "view"))
 		 (:file "model" :depends-on ("config"))
                  (:file "view" :depends-on ("config"))
                  (:file "db" :depends-on ("config"))
+		 (:file "lib" :depends-on ("config"))
                  (:file "config"))))
   :description ""
   :in-order-to ((test-op (load-op tacit-tales-test))))

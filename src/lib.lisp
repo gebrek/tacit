@@ -14,15 +14,11 @@
       data)))
 
 (defun directory-listing (path)
-  (let ((dir-files (list-directory path)))
-    ;; (list :directory)
-    (list :subdirs
-	  (mapcar (lambda (x) (concatenate
-			       'string
-			       (car (last
-				     (remove "" (split-sequence #\/ (directory-namestring x))
-					     :test #'equal)))
-			       "/"))
-		  dir-files)
-	  :files
-	  (remove "" (mapcar #'file-namestring dir-files) :test #'equal))))
+  (list :subdirs
+	(remove-if-not
+	 (lambda (x) (cl-fad:directory-exists-p x))
+	 (list-directory path))
+	:files
+	(remove-if-not
+	 (lambda (x) (not (cl-fad:directory-exists-p x)))
+	 (list-directory path))))
