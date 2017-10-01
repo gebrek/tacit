@@ -34,48 +34,28 @@
 (defroute "/pwd" ()
   (format nil "Working directory: ~a" (sb-posix:getcwd)))
 
-(defroute "/posts/:category/:article" (&key category article)
-  (file-string (format nil "./posts/~a/~a" category article)))
+;;; js playground
+(defroute "/js" ()
+  (render #P"js-script.html"
+	  (list
+	   :title "Hello JS"
+	   :script "js/app/index.js")))
 
+;;; These three routes allow a limited, explicit directory
+;;; navigation. Just a couple levels, expecting a text file just two
+;;; deep.
+(defroute "/posts/:category/:article" (&key category article)
+  (render #P"post.html"
+	  (list
+	   :title article
+	   :content 
+	   (file-string (format nil "./posts/~a/~a" category article)))))
 (defroute "/posts/:category/" (&key category)
   (render #P"directory.html"
-	  (directory-listing (format nil "./posts/~a" category)))
-  ;; (render #P"directory.html"
-  ;; 	  (list
-  ;; 	   :listing
-  ;; 	   (mapcar #'file-namestring (list-directory (format nil "./posts/~a/" category)))))
-  ;; (format nil "~{<a href=\"./~a\">~:*~a</a><br>~%~}~%"
-  ;; 	  (mapcar #'file-namestring (list-directory (format nil "./posts/~a/" category))))
-  )
-
-;; (:directory (:subdirs (a b c)
-;; 		      :files (d e f)))
-
+	  (directory-listing (format nil "./posts/~a" category))))
 (defroute "/posts/" ()
   (render #P"directory.html"
-	  (directory-listing "./posts/")
-	  ;; (list
-	  ;;  :listing
-	  ;;  (mapcar
-	  ;;   (lambda (x) (car (last (remove "" (split-sequence #\/ (directory-namestring x)) :test #'equal))))
-	  ;;   (list-directory "./posts")))
-	  ))
-
-;; (defroute "/posts/" ()
-;;   (format nil "~{<a href=\"./~a/\">~:*~a</a><br>~%~}"
-;; 	  (mapcar
-;; 	   (lambda (x) (car (last (remove "" (split-sequence #\/ (directory-namestring x)) :test #'equal))))
-;; 	   (list-directory "./posts"))))
-
-;; (defroute "/compare/*" (&key splat)
-;;   (format nil "We saw this in the URL: ~a" (car splat)))
-
-;; (defroute "/compare/*" (&key splat)
-;;   (let* ((language-list
-;;           (remove "" (split-sequence #\/ (car splat)) :test #'equal))
-;;          (stats (get-language-sub-stats language-list)))
-;;     (format nil "<div style='font-size:.8em;'>~{~a<br>~%~}</div>"
-;;             (get-language-sub-stats language-list))))
+	  (directory-listing "./posts/")))
 
 (defroute "/compare/*" (&key splat)
   (let* ((language-list

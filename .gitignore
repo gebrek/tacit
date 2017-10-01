@@ -7,3 +7,4 @@ static/images/*
 *.x86f
 *~
 .#*
+/static/TypeScriptSamples/
