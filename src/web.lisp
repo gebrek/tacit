@@ -11,7 +11,9 @@
         :sxql
 	:split-sequence
 	:md5
-	:cl-fad)
+	:cl-fad
+	:cl-who
+	:parenscript)
   (:export :*web*))
 (in-package :tacit-tales.web)
 
@@ -39,7 +41,39 @@
   (render #P"js-script.html"
 	  (list
 	   :title "Hello JS"
-	   :script "js/app/index.js")))
+	   :script "js/app/lib.js")))
+
+;; (define-easy-handler (tutorial1 :uri "/tutorial1") ()
+;;   (with-html-output-to-string (s)
+;;     (:html
+;;      (:head (:title "Parenscript tutorial: 1st example"))
+;;      (:body (:h2 "Parenscript tutorial: 1st example")
+;;             "Please click the link below." :br
+;;             (:a :href "#" :onclick (ps (alert "Hello World"))
+;;                 "Hello World")))))
+
+(defroute "/parenscript" ()
+  (with-html-output-to-string (s)
+    (:html
+     (:head (:title "Parenscript tutorial: 1st example"))
+     (:body (:h2 "Parenscript tutorial: 1st example")
+	    "Please click the link below." :br
+	    (:a :href "#" :onclick (ps (alert "Hello World"))
+		"Hello World")))))
+
+(defroute "/tutorial2" ()
+  (with-html-output-to-string (s)
+    (:html
+     (:head
+      (:title "Parenscript tutorial: 2nd example")
+      (:script :type "text/javascript"
+               (str (ps
+                      (defun greeting-callback ()
+                        (alert "Hello World"))))))
+     (:body
+      (:h2 "Parenscript tutorial: 2nd example")
+      (:a :href "#" :onclick (ps (greeting-callback))
+          "Hello World")))))
 
 ;;; These three routes allow a limited, explicit directory
 ;;; navigation. Just a couple levels, expecting a text file just two

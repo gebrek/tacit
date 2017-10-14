@@ -19,6 +19,10 @@
 
                ;; HTML Template
                :djula
+	       :cl-who
+
+	       ;; javascript drop in
+	       :parenscript
 
                ;; for DB
                :datafly
@@ -32,7 +36,9 @@
 	       :md5)
   :components ((:module "src"
                 :components
-                ((:file "main" :depends-on ("config" "view" "db"))
+                ((:file "thought")
+		 (:file "hex")
+		 (:file "main" :depends-on ("config" "view" "db"))
                  (:file "web" :depends-on ("lib" "view" "model"))
 		 (:file "model" :depends-on ("config"))
                  (:file "view" :depends-on ("config"))
